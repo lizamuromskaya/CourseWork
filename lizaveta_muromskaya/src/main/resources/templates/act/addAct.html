@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title th:text="#{addact.title}"></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/logo.png}"  />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/fonts.css}" />
+    <meta charset="UTF-8">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="navbar">
+            <a class="a-link-margin-logo" th:href="@{/all/home}"><img src="https://cdn0.iconfinder.com/data/icons/expenses-vs-income/30/__electronics_computer_device_technology-64.png" class="logo" /></a>
+            <a class="glo"  style = "height:50px; width: 60px; margin-top: 20px; margin-left: 30px" href="#en" th:href="@{?locale=en}">EN</a>
+            <a class="glo"  style = "height:50px; width: 60px; margin-top: 20px"href="#ru" th:href="@{?locale=ru}">RU</a>
+
+            <ul>
+                <li><a class="a-link-margin" th:text="#{logout.title}" th:href="@{/logout}"></a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div class="text-center">
+    <h1 class="c-text-h1" th:utext="#{addact.title}"></h1>
+</div>
+
+<form class="box" action="#" th:action="@{/seller/addAct}" th:object="${act}" method="post">
+    <div class="c-label box c-box-input" style="margin-top: 355px">
+        <div class="box-select" style="margin-top: -150px">
+            <select class="select" id="productId" name="productId">
+                <option value="" disabled selected  th:utext="#{chooseProduct.title}"> </option>
+                <option th:each="product: ${products}" th:value="${product.id}" th:utext="${product.productName}"></option>
+            </select>
+        </div>
+        <div class="box-select" style="margin-top: -80px">
+            <select class="select" id="sellerId" name="sellerId">
+                <option value="" disabled selected  th:utext="#{chooseSeller.title}"></option>
+                <option th:each="seller: ${sellers}" th:value="${seller.id}" th:utext="${seller.firstName} + ' ' + ${seller.lastName}"></option>
+            </select>
+        </div>
+        <div class="box-select" style="margin-top: -10px;">
+            <select class="select" id="buyerId" name="buyerId">
+                <option value="" disabled selected  th:utext="#{chooseBuyer.title}"></option>
+                <option th:each="buyer: ${buyers}" th:value="${buyer.id}" th:utext="${buyer.firstName} + ' ' + ${buyer.lastName}"></option>
+            </select>
+        </div>
+        <div class="text-field text-field_floating-3">
+            <input class="text-field__input" id="count" name="count" placeholder="login"/>
+            <label for="count" class="text-field__label" th:utext="#{count.title}"></label>
+        </div>
+        <div class="text-field text-field_floating-3">
+            <input type="datetime-local" class="text-field__input" id="date" name="date"/>
+            <label for="date" class="text-field__label" th:utext="#{datee.title}"> </label>
+        </div>
+        <input type = "submit" class="glo" th:value="' ' + #{add.title}+ ' '"/>
+    </div>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title th:utext="#{editbuyer.title}"></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/logo.png}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/fonts.css}" />
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="navbar">
+            <a class="a-link-margin-logo" th:href="@{/all/home}"><img src="https://cdn0.iconfinder.com/data/icons/expenses-vs-income/30/__electronics_computer_device_technology-64.png" class="logo" /></a>
+            <a class="glo"  style = "height:50px; width: 60px; margin-top: 20px; margin-left: 30px" href="#en" th:href="@{?locale=en}">EN</a>
+            <a class="glo"  style = "height:50px; width: 60px; margin-top: 20px"href="#ru" th:href="@{?locale=ru}">RU</a>
+
+            <ul>
+                <li><a class="a-link-margin" th:text="#{logout.title}" th:href="@{/logout}"></a></li>
+
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div class="text-center">
+    <h1 class="c-text-h1 margin-five margin-bottom-five" th:utext="#{editbuyer.title}"></h1>
+
+    <form class="box" action="#" th:action="@{/seller/editBuyer}" th:object="${buyer}" method="post">
+        <div class="c-label box c-box-input">
+            <div class="text-field text-field_floating-3">
+                <input class="text-field__input" type="text" th:field="*{firstName}" th:value="${buyer.firstName}" id="firstName" name="firstName" placeholder="login"/>
+                <label class="text-field__label" for="firstName" th:utext="#{firstName.title}"></label>
+            </div>
+            <div class="text-field text-field_floating-3">
+                <input class="text-field__input" type="text" th:field="*{lastName}" th:value="${buyer.lastName}" id="lastName" name="lastName"  placeholder="login"/>
+                <label class="text-field__label" for="lastName" th:utext="#{lastName.title}"></label>
+            </div>
+            <div class="text-field text-field_floating-3">
+                <input class="text-field__input" type="text" th:field="*{patronymicName}" th:value="${buyer.patronymicName}" id="patronymicName" name="patronymicName"  placeholder="login"/>
+                <label class="text-field__label" for="patronymicName" th:utext="#{patronymicName.title}"></label>
+            </div>
+            <div class="text-field text-field_floating-3">
+                <input class="text-field__input" type="text" th:field="*{userName}" th:value="${buyer.userName}" id="userName" name="userName"  placeholder="login"/>
+                <label class="text-field__label" for="userName" th:utext="#{userName.title} + ':'"></label>
+            </div>
+            <div class="text-field text-field_floating-3">
+                <input class="text-field__input" type="password" th:field="*{userPassword}" th:value="${buyer.userPassword}" id="userPassword" name="userPassword"  placeholder="login"/>
+                <label class="text-field__label" for="userPassword" th:utext="#{userPassword.title}"></label>
+            </div>
+            <div class="text-field text-field_floating-3">
+                <input class="text-field__input"  type="text" th:field="*{phone}" th:value="${buyer.phone}" id="phone" name="phone"  placeholder="login"/>
+                <label class="text-field__label" for="phone" th:utext="#{phone.title}"></label>
+            </div>
+            <div class="text-field text-field_floating-3">
+                <input class="text-field__input"  type="email" th:field="*{email}" th:value="${buyer.email}" id="email" name="email"  placeholder="login"/>
+                <label class="text-field__label" for="email" th:utext="#{email.title}"></label>
+            </div>
+            <input type="hidden" th:value="${buyer.id}" th:field="*{id}" />
+            <input type="hidden" th:value="${buyer.roleName}" th:field="*{roleName}" />
+            <input type = "submit" class="glo" value=" Изменить "/>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>

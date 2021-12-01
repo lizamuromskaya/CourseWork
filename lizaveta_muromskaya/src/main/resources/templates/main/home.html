@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="#{main.title}"></title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+        <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/logo.png}"  />
+
+        <link rel="stylesheet" type="text/css" th:href="@{/css/fonts.css}" />
+        <meta charset="UTF-8">
+        <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div class="navbar">
+                    <a class="a-link-margin-logo" th:href="@{/}"><img src="https://cdn0.iconfinder.com/data/icons/expenses-vs-income/30/__electronics_computer_device_technology-64.png" class="logo" /></a>
+                        <a class="glo"  style = "height:50px; width: 60px; margin-top: 20px; margin-left: 30px" href="#en" th:href="@{?locale=en}">EN</a>
+                        <a class="glo"  style = "height:50px; width: 60px; margin-top: 20px"href="#ru" th:href="@{?locale=ru}">RU</a>
+                    <ul>
+                        <li><a class="a-link-margin" th:text="#{logout.title}" th:href="@{/logout}"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div class="text-center">
+            <h1 class="c-text-h1 margin-five" th:text="#{welcomeshort.title}"></h1>
+                <div style="padding: 2% 30%">
+                    <div th:if="${#request.isUserInRole('BLOCKED')}" style="text-align: center;">
+                        <div class="box c-box-incorrect">
+                            <div class="c-label incorrect" th:text="#{blocked.title}"></div>
+                        </div>
+                    </div>
+                    <div th:if="${#request.isUserInRole('SELLER') || #request.isUserInRole('ADMIN')}">
+                        <table class = "sortable">
+                            <tr>
+                                <td><a class="a-link-margin" th:text="#{addproduct.title}" th:href="@{/seller/addProduct}"></a></td>
+                                <td><a class="a-link-margin" th:text="#{deleteproduct.title}" th:href="@{/seller/deleteProduct}"></a></td>
+                                <td><a class="a-link-margin" th:text="#{addbuyer.title}" th:href="@{/admin/addBuyer}"></a></td>
+                            </tr>
+                            <tr>
+                                <td><a class="a-link-margin" th:text="#{buyers.title}" th:href="@{/seller/buyers}"></a></td>
+                                <td><a class="a-link-margin" th:text="#{findbuyers.title}" th:href="@{/seller/findBuyer}"></a></td>
+                                <td><a class="a-link-margin" th:text="#{deletebuyer.title}" th:href="@{/seller/deleteBuyer}"></a></td>
+                            </tr>
+                            <tr>
+                                <td><a class="a-link-margin" th:text="#{findseller.title}" th:href="@{/seller/findSeller}"></a></td>
+                                <td><a class="a-link-margin" th:text="#{sellers.title}" th:href="@{/seller/sellers}"></a></td>
+                                <td><a class="a-link-margin" th:text="#{addact.title}" th:href="@{/seller/addAct}"></a></td>
+                            </tr>
+                            <tr>
+                                <td><a class="a-link-margin" th:text="#{deleteact.title}" th:href="@{/seller/deleteAct}"></a></td>
+                                <td><a class="a-link-margin" th:text="#{acts.title}" th:href="@{/seller/acts}"></a></td>
+                                <td><a class="a-link-margin" th:text="#{findacts.title}" th:href="@{/seller/findAct}"></a></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div th:if="${#request.isUserInRole('ADMIN')}">
+                        <table class = "sortable">
+                            <tr>
+                                <td><a class="a-link-margin" th:text="#{addposition.title}" th:href="@{/admin/addPosition}"></a></td>
+                                <td><a class="a-link-margin" th:text="#{deleteposition.title}" th:href="@{/admin/deletePosition}"></a></td>
+                                <td><a class="a-link-margin" th:text="#{addseller.title}" th:href="@{/admin/addSeller}"></a></td>
+                            </tr>
+                            <tr>
+                                <td><a class="a-link-margin" th:text="#{deleteseller.title}" th:href="@{/admin/deleteSeller}"></a></td>
+                                <td><a class="a-link-margin" th:text="#{findseller.title}" th:href="@{/admin/findSeller}"></a></td>
+                                <td><a class="a-link-margin" th:text="#{sellers.title}" th:href="@{/admin/sellers}"></a></td>
+                            </tr>
+                            <tr>
+                                <td><a class="a-link-margin" th:text="#{blockbuyer.title}" th:href="@{/admin/blockBuyer}"></a></td>
+                                <td><a class="a-link-margin" th:text="#{blockseller.title}" th:href="@{/admin/blockSeller}"></a></td>
+                                <td><a class="a-link-margin" th:text="#{positionschart.title}" th:href="@{/admin/positionschart}"></a></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div th:if="${#request.isUserInRole('BUYER') || #request.isUserInRole('SELLER') || #request.isUserInRole('ADMIN')}">
+                        <table  class = "sortable">
+                            <tr>
+                                <td><a class="a-link-margin" th:text="#{productscatalog.title}" th:href="@{/all/products}"></a></td>
+                                <td><a class="a-link-margin" th:text="#{positions.title}" th:href="@{/all/positions}"></a></td>
+                                <td><a class="a-link-margin" th:text="#{location.title}" th:href="@{/all/map}"></a></td>
+                            </tr>
+                            <tr>
+                                <td><a class="a-link-margin" th:text="#{findproducts.title}" th:href="@{/all/findProduct}"></a></td>
+                                <td><a class="a-link-margin" th:text="#{findpositions.title}" th:href="@{/all/findPosition}"></a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title th:utext="#{addseller.title}"></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/logo.png}"  />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/fonts.css}" />
+
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="navbar">
+            <a class="a-link-margin-logo" th:href="@{/all/home}"><img src="https://cdn0.iconfinder.com/data/icons/expenses-vs-income/30/__electronics_computer_device_technology-64.png" class="logo" /></a>
+            <a class="glo"  style = "height:50px; width: 60px; margin-top: 20px; margin-left: 30px" href="#en" th:href="@{?locale=en}">EN</a>
+            <a class="glo"  style = "height:50px; width: 60px; margin-top: 20px"href="#ru" th:href="@{?locale=ru}">RU</a>
+
+            <ul>
+                <li><a class="a-link-margin" th:text="#{logout.title}" th:href="@{/logout}"></a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div class="text-center">
+    <h1 class="c-text-h1 margin-five" th:utext="#{addseller.title}"></h1>
+</div>
+<form class="box" action="#" th:action="@{/admin/addSeller}" th:object="${seller}" method="post">
+    <div class="c-label box c-box-input" style="padding-bottom: 150px">
+        <div class="text-field text-field_floating-3">
+            <input class="text-field__input" id="firstName" name="firstName" placeholder="login"/>
+            <label for="firstName" th:utext="#{firstName.title}" class="text-field__label"></label>
+        </div>
+        <div class="text-field text-field_floating-3">
+            <input class="text-field__input" id="lastName" name="lastName" placeholder="login"/>
+            <label th:utext="#{lastName.title}" class="text-field__label"></label>
+        </div>
+        <div class="text-field text-field_floating-3">
+            <input class="text-field__input" id="patronymicName" name="patronymicName" placeholder="login"/>
+            <label class="text-field__label" th:utext="#{patronymicName.title}"></label>
+        </div>
+        <div class="text-field text-field_floating-3">
+            <input class="text-field__input" readonly onfocus="this.removeAttribute('readonly')"  id="userName" name="userName" placeholder="login"/>
+            <label class="text-field__label" th:utext="#{userName.title} + ':'"></label>
+        </div>
+        <div class="text-field text-field_floating-3">
+            <input class="text-field__input" readonly onfocus="this.removeAttribute('readonly')" type="password" id="userPassword" name="userPassword" placeholder="login"/>
+            <label class="text-field__label" th:utext="#{userPassword.title} + ':'"></label>
+        </div>
+        <div class="box-select" style="margin-top: 260px;">
+            <select class="select" id="positionId" name="positionId">
+                <option value="" disabled selected  th:utext="#{choosePosition.title}"> </option>
+                <option th:each="position: ${positions}" th:value="${position.id}" th:utext="${position.positionName}"></option>
+            </select>
+        </div>
+            <input hidden id="roleName" name="roleName" th:value="ROLE_SELLER"/>
+        <input style="margin-top: 80px" type = "submit" class="glo" th:value="' ' + #{add.title}+ ' '"/>
+    </div>
+</form>
+</body>
+</html>

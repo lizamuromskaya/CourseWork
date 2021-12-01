@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title th:utext="#{addposition.title}"></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/logo.png}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/fonts.css}" />
+    <script type="text/javascript" th:src="@{/scripts/position/addPosition.js}"></script>
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="navbar">
+            <a class="a-link-margin-logo" th:href="@{/all/home}"><img src="https://cdn0.iconfinder.com/data/icons/expenses-vs-income/30/__electronics_computer_device_technology-64.png" class="logo" /></a>
+            <a class="glo"  style = "height:50px; width: 60px; margin-top: 20px; margin-left: 30px" href="#en" th:href="@{?locale=en}">EN</a>
+            <a class="glo"  style = "height:50px; width: 60px; margin-top: 20px"href="#ru" th:href="@{?locale=ru}">RU</a>
+
+            <ul>
+                <li><a class="a-link-margin" th:text="#{logout.title}" th:href="@{/logout}"></a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div class="text-center">
+    <h1 class="c-text-h1" style="margin-bottom: -50px; margin-top: 50px" th:utext="#{addposition.title}"></h1>
+</div>
+
+<form class="box" action="#" th:action="@{/admin/addPosition}" th:object="${position}" method="post">
+    <div class="c-label box c-box-input">
+        <div class="text-field text-field_floating-3">
+            <input class="text-field__input" id="positionName" name="positionName" placeholder="login"/>
+            <label for="positionName" class="text-field__label" th:utext="#{name.title} + ':'"></label>
+        </div>
+        <div class="text-field text-field_floating-3">
+            <input class="text-field__input" id="positionSalary" name="positionSalary" placeholder="login"/>
+            <label for="positionSalary" th:utext="#{salary.title} + ':'" class="text-field__label"></label>
+        </div>
+        <input type = "submit" class="glo" th:value="' ' + #{add.title}+ ' '" onclick="showMessage()"/>
+    </div>
+</form>
+</body>
+</html>

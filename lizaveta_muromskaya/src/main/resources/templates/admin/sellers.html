@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title th:utext="#{sellers.title}"></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/logo.png}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/fonts.css}"/>
+    <meta charset="UTF-8" />
+    <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+</head>
+
+<body>
+<header>
+    <div class="container">
+        <div class="navbar">
+            <a class="a-link-margin-logo" th:href="@{/all/home}"><img src="https://cdn0.iconfinder.com/data/icons/expenses-vs-income/30/__electronics_computer_device_technology-64.png" class="logo" /></a>
+            <a class="glo"  style = "height:50px; width: 60px; margin-top: 20px; margin-left: 30px" href="#en" th:href="@{?locale=en}">EN</a>
+            <a class="glo"  style = "height:50px; width: 60px; margin-top: 20px"href="#ru" th:href="@{?locale=ru}">RU</a>
+
+            <ul>
+                <li><a class="a-link-margin" th:text="#{logout.title}" th:href="@{/logout}"></a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<div class="text-center">
+    <h1 class="c-text-h1 margin-five" th:utext="#{sellers.title}"></h1>
+    <div class="table-container">
+
+        <table class = "sortable">
+            <thead>
+            <tr>
+                <th th:utext="#{id.title}"></th>
+                <th th:utext="#{firstName.title}"></th>
+                <th th:utext="#{lastName.title}"></th>
+                <th th:utext="#{patronymicName.title}"></th>
+                <th th:utext="#{login.name}"></th>
+                <th th:utext="#{password.name}"></th>
+                <th th:utext="#{positionId.title}"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="seller: ${sellers}">
+                <td><a class="a-link-no-margin" th:href="'/admin/editSeller?id=' + ${seller.id}"  th:text="${seller.id}"></a></td>
+                <td th:utext="${seller.firstName}"></td>
+                <td th:utext="${seller.lastName}"></td>
+                <td th:utext="${seller.patronymicName}"></td>
+                <td th:utext="${seller.userName}"></td>
+                <td th:utext="${seller.userPassword}"></td>
+                <td th:utext="${seller.positionId}"></td>
+            </tr>
+            </tbody>
+        </table>
+        </form>
+    </div>
+</div>
+</body>
+</html>

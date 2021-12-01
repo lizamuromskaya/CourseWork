@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title th:text="#{main.title}"></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/logo.png}"  />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/fonts.css}" />
+    <meta charset="UTF-8">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="navbar">
+            <a class="a-link-margin-logo" th:href="@{/}"><img src="https://cdn0.iconfinder.com/data/icons/expenses-vs-income/30/__electronics_computer_device_technology-64.png" class="logo" /></a>
+            <a class="glo"  style = "height:50px; width: 60px; margin-top: 20px; margin-left: 30px" href="#en" th:href="@{?locale=en}">EN</a>
+            <a class="glo"  style = "height:50px; width: 60px; margin-top: 20px" href="#ru" th:href="@{?locale=ru}">RU</a>
+
+            <ul>
+                <li><a class="a-link-margin" th:text="#{login.title}" th:href="@{/all/home}"></a></li>
+                <li><a class="a-link-margin" th:text="#{signup.title}" th:href="@{/registration}"></a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<div class="text-center">
+    <h1 class="c-text-h1 margin-five" th:text="#{h.title}"></h1>
+    <p class="c-text-body" th:text="#{welcome.title}"></p>
+    <img src="https://cdn0.iconfinder.com/data/icons/azure-illustrations/1000/workspace___work_from_home_home_desk_office_computer_furniture_woman-512.png" />
+</div>
+
+</body>
+</html>

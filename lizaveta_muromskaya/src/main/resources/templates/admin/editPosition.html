@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title th:utext="#{editposition.title}"></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/logo.png}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/fonts.css}" />
+    <script type="text/javascript" th:src="@{/scripts/position/editPosition.js}"></script>
+</head>
+
+<body onload="onLoad()">
+<header>
+    <div class="container">
+        <div class="navbar">
+            <a class="a-link-margin-logo" th:href="@{/all/home}"><img src="https://cdn0.iconfinder.com/data/icons/expenses-vs-income/30/__electronics_computer_device_technology-64.png" class="logo" /></a>
+            <a class="glo"  style = "height:50px; width: 60px; margin-top: 20px; margin-left: 30px" href="#en" th:href="@{?locale=en}">EN</a>
+            <a class="glo"  style = "height:50px; width: 60px; margin-top: 20px"href="#ru" th:href="@{?locale=ru}">RU</a>
+
+            <ul>
+                <li><a class="a-link-margin" th:text="#{logout.title}" th:href="@{/logout}"></a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div class="text-center">
+    <h1 class="c-text-h1 margin-five" th:utext="#{editposition.title}" style="margin-bottom: -100px"></h1>
+
+    <form class="box" action="#" th:action="@{/admin/editPosition}" th:object="${position}" method="post">
+        <div class="c-label box c-box-input">
+            <div class="text-field text-field_floating-3">
+                <input class="text-field__input"  id="name" type="text" th:value="${position.positionName}" th:field="*{positionName}"/>
+                <label class="text-field__label" for="name" th:utext="#{name.title}"></label>
+            </div>
+            <div class="text-field text-field_floating-3">
+                <input class="text-field__input"  id="salary" type="text" th:value="${position.positionSalary}" th:field="*{positionSalary}"/>
+                <label class="text-field__label" for="salary" th:utext="#{salary.title}"></label>
+            </div>
+            <input type="hidden" th:value="${position.id}" th:field="*{id}" />
+            <input type = "submit" class="glo" th:value="' ' + #{edit.title} + ' '" onclick="showMessage()"/>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>

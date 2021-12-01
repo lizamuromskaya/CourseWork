@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title th:text="#{positionschart.title}"></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/logo.png}"  />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/fonts.css}" />
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="http://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <meta charset="UTF-8">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="navbar">
+            <a class="a-link-margin-logo" th:href="@{/all/home}"><img src="https://cdn0.iconfinder.com/data/icons/expenses-vs-income/30/__electronics_computer_device_technology-64.png" class="logo" /></a>
+            <a class="glo"  style = "height:50px; width: 60px; margin-top: 20px; margin-left: 30px" href="#en" th:href="@{?locale=en}">EN</a>
+            <a class="glo"  style = "height:50px; width: 60px; margin-top: 20px"href="#ru" th:href="@{?locale=ru}">RU</a>
+
+            <ul>
+                <li><a class="a-link-margin" th:text="#{logout.title}" th:href="@{/logout}"></a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<div class="text-center">
+    <h1 class="c-text-h1 margin-five" th:utext="#{positionschart.title}"></h1>
+
+    <div style="padding: 2% 30%" class="c-chart">
+    <div class="ct-chart ct-golden-section c-chart" th:object="${arr}">
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            var arr = /*[[${arr}]]*/ ${arr} ;
+            /*]]>*/
+            f(arr);
+            function f(arr) {
+                var data = {
+                    series: arr
+                };
+
+                var sum = function (a, b) {
+                    return a + b
+                };
+
+                new Chartist.Pie('.ct-chart', data, {
+                    labelInterpolationFnc: function (value) {
+                        return Math.round(value / data.series.reduce(sum) * 100) + '%';
+                    }
+                });
+            }
+
+        </script>
+        <ul class="marking-ul" type="square">
+            <li><p style="display:inline; color: #d70">■ </p>0-500</li>
+            <li><p style="display:inline; color: #f05b4f">■ </p>501-1000</li>
+            <li><p style="display:inline; color: #f4c63d">■ </p>1001-2000</li>
+            <li><p style="display:inline; color: #d17905">■ </p>2001-...</li>
+        </ul>
+    </div>
+
+    </div>
+
+</div>
+</body>
+</html>

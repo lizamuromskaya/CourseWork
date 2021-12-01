@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title th:utext="#{deletebuyer.title}"></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/logo.png}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/fonts.css}"/>
+    <meta charset="UTF-8" />
+    <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+</head>
+
+<body>
+<header>
+    <div class="container">
+        <div class="navbar">
+            <a class="a-link-margin-logo" th:href="@{/}"><img src="https://cdn0.iconfinder.com/data/icons/expenses-vs-income/30/__electronics_computer_device_technology-64.png" class="logo" /></a>
+            <a class="glo"  style = "height:50px; width: 60px; margin-top: 20px; margin-left: 30px" href="#en" th:href="@{?locale=en}">EN</a>
+            <a class="glo"  style = "height:50px; width: 60px; margin-top: 20px"href="#ru" th:href="@{?locale=ru}">RU</a>
+
+            <ul>
+                <li><a class="a-link-margin" th:text="#{logout.title}" th:href="@{/logout}"></a></li>
+
+            </ul>
+        </div>
+    </div>
+</header>
+<div class="text-center">
+    <div class="table-container">
+        <div class="box c-box-incorrect">
+            <div class="c-label incorrect">
+                <h1>Упс... Что-то пошло не так!</h1>
+                <h1>Пожалуйста, обратите внимание на следующие пункты:</h1>
+                <h2>- Если вы удаляете пользователя, удостоверьтесь, что он не имеет активных договоров</h2>
+                <h2>- Если вы создаете договор, удостоверьтесь, что поля ID заполнены существующими значениями</h2>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

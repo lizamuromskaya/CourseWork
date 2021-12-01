@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title th:text="#{signup.title}"></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/logo.png}"  />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/fonts.css}" />
+    <meta charset="UTF-8">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="navbar">
+            <a class="a-link-margin-logo" th:href="@{/}"><img src="https://cdn0.iconfinder.com/data/icons/expenses-vs-income/30/__electronics_computer_device_technology-64.png" class="logo" /></a>
+            <a class="glo"  style = "height:50px; width: 60px; margin-top: 20px; margin-left: 30px" href="#en" th:href="@{?locale=en}">EN</a>
+            <a class="glo"  style = "height:50px; width: 60px; margin-top: 20px"href="#ru" th:href="@{?locale=ru}">RU</a>
+
+            <ul>
+                <li><a class="a-link-margin" th:text="#{login.title}" th:href="@{/all/home}"></a></li>
+                <li><a class="a-link-margin" th:text="#{signup.title}" th:href="@{/registration}"></a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<form class="box" action="#" th:action="@{/registration}" th:object="${usr}" method="post">
+    <div class="c-label box c-box-input">
+        <div class="text-field text-field_floating-3">
+            <input class="text-field__input" type="text" id="firstName" name="firstName" placeholder="placeholder"/>
+            <label for="firstName" class="text-field__label" th:utext="#{firstName.title}"></label>
+        </div>
+        <div class="text-field text-field_floating-3">
+            <input class="text-field__input" type="text" id="lastName" name="lastName" placeholder="placeholder"/>
+            <label for="lastName" class="text-field__label" th:utext="#{lastName.title}"></label>
+        </div>
+        <div class="text-field text-field_floating-3">
+            <input class="text-field__input" type="text" id="patronymicName" name="patronymicName" placeholder="placeholder"/>
+            <label for="patronymicName" class="text-field__label" th:utext="#{patronymicName.title}"></label>
+        </div>
+        <div class="text-field text-field_floating-3">
+            <input class="text-field__input" readonly onfocus="this.removeAttribute('readonly')"  type="text" id="userName" name="userName" placeholder="placeholder"/>
+            <label for="userName" class="text-field__label" th:utext="#{userName.title} + ':'"></label>
+        </div>
+        <div class="text-field text-field_floating-3">
+            <input class="text-field__input" readonly onfocus="this.removeAttribute('readonly')"  type="password" id="userPassword" name="userPassword" placeholder="placeholder"/>
+            <label for="userPassword" class="text-field__label" th:utext="#{userPassword.title} + ':'"></label>
+        </div>
+        <div class="text-field text-field_floating-3">
+            <input class="text-field__input" type="text" id="phone" name="phone" placeholder="placeholder"/>
+            <label for="phone" class="text-field__label" th:utext="#{phone.title}"></label>
+        </div>
+        <div class="text-field text-field_floating-3">
+            <input class="text-field__input" type="email" id="email" name="email" placeholder="placeholder"/>
+            <label for="email" class="text-field__label" th:utext="#{email.title}"></label>
+        </div>
+
+        <input type = "submit" class="glo" th:value="' ' + #{signup.title} + ' '" />
+    </div>
+</form>
+</body>
+</html>
